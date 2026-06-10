@@ -26,6 +26,7 @@ const venues = [
 
 
 function App() {
+   const [showBio, setShowBio] = useState(false);
    const [boneBurst, setBoneBurst] = useState(false);
    const [showContactForm, setShowContactForm] = useState(false);
    const formRef = useRef(null);
@@ -63,10 +64,41 @@ function App() {
         <div className="hero-image-container">
         <img
           src={`${import.meta.env.BASE_URL}images/fab4.png`}
-          alt="Romeo Booking"
+          alt="pap-rhino"
           className="hero-image"
         />
+
+        
         </div>
+        <div className="bio-section">
+          <button
+            className="bio-toggle"
+            onClick={() => setShowBio(!showBio)}
+          >
+            {showBio ? "Hide Bio" : "Papa Rhino Productions"}
+          </button>
+
+          {showBio && (
+            <div className="bio-card">
+              <p>
+                Papa Rhino Productions specializes in artist management,
+                live event booking, venue coordination, tour support,
+                promotion, and entertainment consulting. We work with
+                independent artists, touring acts, festivals, and venues
+                to create unforgettable live experiences.
+              </p>
+
+              <p>
+                With years of experience in the punk, rockabilly,
+                psychobilly, horror punk, and underground music scenes,
+                Papa Rhino Productions helps connect artists with
+                opportunities while building long-term relationships
+                throughout the industry.
+              </p>
+            </div>
+          )}
+        </div>
+
         <h1 className="intro">Bands</h1>
         <p className="bio">
           {/* Bands I've worked with. */}
