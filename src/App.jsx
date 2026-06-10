@@ -9,12 +9,16 @@ import { useState, useRef, useEffect } from "react";
 
 const venues = [
   {
-    name: "Characters",
-    city: "Pomona, CA",
+    name: "Dollhut",
+    city: "Anaheim, CA",
   },
   {
-    name: "Starlite Loung",
-    city: "Glendale, AZ",
+    name: "Stages",
+    city: "Santa Ana, CA",
+  },
+  {
+    name: "Characters",
+    city: "Pomona, CA",
   },
 ];
 
@@ -22,8 +26,20 @@ const venues = [
 
 
 function App() {
+   const [boneBurst, setBoneBurst] = useState(false);
    const [showContactForm, setShowContactForm] = useState(false);
    const formRef = useRef(null);
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+
+      setBoneBurst(true);
+
+      setTimeout(() => {
+        setBoneBurst(false);
+      }, 900);
+    };
+
     useEffect(() => {
       if (showContactForm && formRef.current) {
         formRef.current.scrollIntoView({
@@ -33,7 +49,10 @@ function App() {
       }
     }, [showContactForm]);
 
+    
+
   return (
+    <div className="page-frame">
     <main className="app">
 
     
@@ -43,12 +62,12 @@ function App() {
 
         <div className="hero-image-container">
         <img
-          src={`${import.meta.env.BASE_URL}images/romeo3.png`}
+          src={`${import.meta.env.BASE_URL}images/fab4.png`}
           alt="Romeo Booking"
           className="hero-image"
         />
         </div>
-        <h1 className="intro">Bands & Artists</h1>
+        <h1 className="intro">Bands</h1>
         <p className="bio">
           {/* Bands I've worked with. */}
           {/* Professional booking management for bands, venues
@@ -59,17 +78,6 @@ function App() {
         </a> */}
 
         <div className="band-links">
-        <a
-          href="https://www.instagram.com/hell_city_havoc_official/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/hch.png`}
-            alt="Hell City Havoc"
-          />
-        </a>
 
         <a
           href="https://www.instagram.com/hellbillys_band_page/"
@@ -84,61 +92,37 @@ function App() {
         </a>
 
         <a
-          href="https://www.instagram.com/the_hexxers_/"
+          href="https://www.instagram.com/rezurex_official/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="band-link"
         >
           <img
-            src={`${import.meta.env.BASE_URL}images/hexxers.png`}
+            src={`${import.meta.env.BASE_URL}images/rezurex.png`}
             alt="Band 3"
           />
         </a>
 
           <a
-          href="https://www.instagram.com/hell_city_havoc_official/"
+          href="https://www.instagram.com/12steprebels/"
           target="_blank"
           rel="noopener noreferrer"
           className="band-link"
         >
           <img
-            src={`${import.meta.env.BASE_URL}images/hch.png`}
+            src={`${import.meta.env.BASE_URL}images/12step.png`}
             alt="Hell City Havoc"
-          />
-        </a>
-
-        <a
-          href="https://www.instagram.com/hellbillys_band_page/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/hellbillys.png`}
-            alt="So Cal Romeo"
-          />
-        </a>
-
-        <a
-          href="https://www.instagram.com/the_hexxers_/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/hexxers.png`}
-            alt="Band 3"
           />
         </a>
 
           <a
-          href="https://www.instagram.com/hell_city_havoc_official/"
+          href="https://www.instagram.com/madmarge_official/?hl=en"
           target="_blank"
           rel="noopener noreferrer"
           className="band-link"
         >
           <img
-            src={`${import.meta.env.BASE_URL}images/hch.png`}
+            src={`${import.meta.env.BASE_URL}images/madm.png`}
             alt="Hell City Havoc"
           />
         </a>
@@ -155,14 +139,38 @@ function App() {
           />
         </a>
 
-        <a
-          href="https://www.instagram.com/the_hexxers_/"
+          <a
+          href="https://www.instagram.com/threebadjacks65/"
           target="_blank"
           rel="noopener noreferrer"
           className="band-link"
         >
           <img
-            src={`${import.meta.env.BASE_URL}images/hexxers.png`}
+            src={`${import.meta.env.BASE_URL}images/tbj.png`}
+            alt="Hell City Havoc"
+          />
+        </a>
+
+         <a
+          href="https://www.instagram.com/therocketz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="band-link"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/rocketz.png`}
+            alt="Band 3"
+          />
+        </a>
+
+        <a
+          href="https://www.instagram.com/papa.rhino.productions/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="band-link"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/rhino.png`}
             alt="Band 3"
           />
         </a>
@@ -170,7 +178,7 @@ function App() {
       </section>
 
       <section id="venues" className="section">
-        <h2>Venue Contacts</h2>
+        <h2>Venues</h2>
         <div className="card-grid">
           {venues.map((venue) => (
             <article className="card" key={venue.name}>
@@ -194,7 +202,7 @@ function App() {
           {showContactForm && (
 
          <div ref={formRef}>
-            <form>
+            <form onSubmit={handleSubmit} className="contact-form">
               <input type="text" placeholder="Band/Artist Name" />
 
               <input type="text" placeholder="Phone Number" />
@@ -203,12 +211,28 @@ function App() {
 
               <textarea placeholder="Tell me about your event, venue, or booking needs"></textarea>
 
-              <button type="submit">Submit</button>
+              {/* <button type="submit">Submit</button> */}
+              <button type="submit" className="submit-bone-btn">
+                Submit
+
+                {boneBurst && (
+                  <span className="bone-burst">
+                   <span>🦴</span>
+                   <span>☠️</span>
+                   <span>🦴</span>
+                   <span>☠️</span>
+                   <span>🦴</span>
+                   <span>☠️</span>
+                   <span>🦴</span>
+                  </span>
+                )}
+              </button>
             </form>
             </div>
           )}
         </section>
     </main>
+    </div>
   );
 }
 
