@@ -36,34 +36,30 @@ function App() {
    const formRef = useRef(null);
    const successRef = useRef(null);
 
-   const handleSubmit = async (e) => {
-  e.preventDefault();
+      const handleSubmit = async (e) => {
+                e.preventDefault();
 
-  setBoneBurst(true);
+                setBoneBurst(true);
 
-  const result = await formspreeSubmit(e);
+                await formspreeSubmit(e);
 
-  if (!result?.body?.errors) {
-    setSubmitted(true);
+                formRef.current?.reset();
 
-    // Clear form fields
-    formRef.current?.reset();
+                setSubmitted(true);
 
-    // Close form after a short delay
-    setTimeout(() => {
-      setShowContactForm(false);
-    }, 2500);
+                setTimeout(() => {
+                  setBoneBurst(false);
+                }, 900);
 
-    // Hide success message later
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 5000);
-  }
+                setTimeout(() => {
+                  setShowContactForm(false);
+                }, 2500);
 
-  setTimeout(() => {
-    setBoneBurst(false);
-  }, 900);
-};
+                setTimeout(() => {
+                  setSubmitted(false);
+                }, 5000);
+              };
+   
                 useEffect(() => {
                   if (showContactForm && formRef.current) {
                     formRef.current.scrollIntoView({
@@ -263,13 +259,10 @@ function App() {
           >
             {showContactForm ? "Close" : "Contact Me"}
           </button>
+
           {showContactForm && (
-
-         <div ref={formRef}>
-
-          <form 
-                ref={formRef}
-                onSubmit={handleSubmit}>
+         <div>
+          <form  ref={formRef} onSubmit={handleSubmit}>
                 <input
                   type="text"
                   name="band_artist"
