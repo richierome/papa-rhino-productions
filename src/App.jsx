@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useRef, useEffect } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 
 
@@ -26,6 +27,7 @@ const venues = [
 
 
 function App() {
+   const [state, formspreeSubmit] = useForm("xojzndvg");
    const [showBands, setShowBands] = useState(false);
    const [showContactForm, setShowContactForm] = useState(false);
    const [submitted, setSubmitted] = useState(false);
@@ -34,21 +36,34 @@ function App() {
    const formRef = useRef(null);
    const successRef = useRef(null);
 
-   const handleSubmit = (e) => {
-      e.preventDefault();
+   const handleSubmit = async (e) => {
+  e.preventDefault();
 
-      setBoneBurst(true);
-      setSubmitted(true);
+  setBoneBurst(true);
 
-      setTimeout(() => {
-        setBoneBurst(false);
-      }, 900);
+  const result = await formspreeSubmit(e);
 
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    };
+  if (!result?.body?.errors) {
+    setSubmitted(true);
 
+    // Clear form fields
+    formRef.current?.reset();
+
+    // Close form after a short delay
+    setTimeout(() => {
+      setShowContactForm(false);
+    }, 2500);
+
+    // Hide success message later
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 5000);
+  }
+
+  setTimeout(() => {
+    setBoneBurst(false);
+  }, 900);
+};
                 useEffect(() => {
                   if (showContactForm && formRef.current) {
                     formRef.current.scrollIntoView({
@@ -251,39 +266,64 @@ function App() {
           {showContactForm && (
 
          <div ref={formRef}>
-            <form onSubmit={handleSubmit} className="contact-form">
-              <input type="text" placeholder="Band/Artist Name" />
 
-              <input type="text" placeholder="Phone Number" />
+          <form 
+                ref={formRef}
+                onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="band_artist"
+                  placeholder="Band/Artist Name"
+                  required
+                />
 
-              <input type="email" placeholder="Email" />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                />
 
-              <textarea placeholder="Tell me about your event, venue, or booking needs"></textarea>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
 
-              {/* <button type="submit">Submit</button> */}
-              <button type="submit" className="submit-bone-btn">
-                Submit
+                <ValidationError field="email" errors={state.errors} />
 
-                {boneBurst && (
-                  <span className="bone-burst">
-                   <span>🦴</span>
-                   <span>☠️</span>
-                   <span>🦴</span>
-                   <span>☠️</span>
-                   <span>🦴</span>
-                   <span>☠️</span>
-                   <span>🦴</span>
-                  </span>
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your event, venue, or booking needs"
+                  required
+                ></textarea>
+
+                <ValidationError field="message" errors={state.errors} />
+
+                <button
+                  type="submit"
+                  className="submit-bone-btn"
+                  disabled={state.submitting}
+                >
+                  {state.submitting ? "Sending..." : "Submit"}
+                  {boneBurst && (
+                    <span className="bone-burst">
+                      <span>🦴</span>
+                      <span>☠️</span>
+                      <span>🦴</span>
+                      <span>☠️</span>
+                      <span>🦴</span>
+                      <span>🦴</span>
+                    </span>
+                  )}
+                </button>
+                {submitted && (
+                  <div ref={successRef} className="success-message">
+                    🦴 Request Submitted 🦴
+                    <br />
+                    Papa Rhino Productions has received your request.
+                  </div>
                 )}
-              </button>
-              {submitted && (
-                <div 
-                 ref={successRef}
-                className="success-message">
-                  Thanks for contacting Papa Rhino Productions.
-                  We'll be in touch soon.
-                </div>
-              )}
               </form>
             </div>
           )}
