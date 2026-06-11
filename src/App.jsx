@@ -69,7 +69,6 @@ function App() {
               }
             }, [submitted]);
   return (
-
     <div className="page-frame">
     <main className="app">
      <section className="hero">
@@ -118,8 +117,6 @@ function App() {
           {showBands ? "X" : "Bands"}
         </button>
 
-
-
             {showBands && (
             <div className="bands-card">
 
@@ -147,7 +144,6 @@ function App() {
             alt="Band 3"
           />
         </a>
-
           <a
           href="https://www.instagram.com/12steprebels/"
           target="_blank"
@@ -219,9 +215,7 @@ function App() {
             alt="Band 3"
           />
         </a>
-
               </div>
-
             </div>
           )}
 
@@ -230,111 +224,6 @@ function App() {
           {/* Professional booking management for bands, venues
           and touring artists. */}
         </p>
-        {/* <a className="hero-btn" href="#bookings">
-          Book Now
-        </a> */}
-
-
-
-{/* 
-        <div className="band-links">
-
-        <a
-          href="https://www.instagram.com/hellbillys_band_page/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/hellbillys.png`}
-            alt="So Cal Romeo"
-          />
-        </a>
-
-        <a
-          href="https://www.instagram.com/rezurex_official/?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/rezurex.png`}
-            alt="Band 3"
-          />
-        </a>
-
-          <a
-          href="https://www.instagram.com/12steprebels/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/12step.png`}
-            alt="Hell City Havoc"
-          />
-        </a>
-
-          <a
-          href="https://www.instagram.com/madmarge_official/?hl=en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/madm.png`}
-            alt="Hell City Havoc"
-          />
-        </a>
-
-        <a
-          href="https://www.instagram.com/calaveramusica?igsh=MzRlODBiNWFlZA=="
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/calavera.png`}
-            alt="So Cal Romeo"
-          />
-        </a>
-
-          <a
-          href="https://www.instagram.com/threebadjacks65/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/tbj.png`}
-            alt="Hell City Havoc"
-          />
-        </a>
-
-         <a
-          href="https://www.instagram.com/therocketz/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/rocketz.png`}
-            alt="Band 3"
-          />
-        </a>
-
-        <a
-          href="https://www.instagram.com/papa.rhino.productions/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="band-link"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}images/rhino.png`}
-            alt="Band 3"
-          />
-        </a>
-      </div> */}
       </section>
 
       <section id="venues" className="section">
