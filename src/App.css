@@ -252,6 +252,18 @@ button {
 
 
 /* SECTIONS */
+.venue-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.venue-card-link .card {
+  transition: transform 0.3s ease;
+}
+
+.venue-card-link:hover .card {
+  transform: translateY(-5px);
+}
 
 .section {
   width: 100%;
@@ -595,7 +607,7 @@ textarea {
   }
 
   .section {
-    padding: 3rem 1rem;
+    padding: 2rem 2rem;
   }
 
   .card-grid {

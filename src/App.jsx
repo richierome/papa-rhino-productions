@@ -12,14 +12,18 @@ const venues = [
   {
     name: "Dollhut",
     city: "Anaheim, CA",
+    link: "https://www.instagram.com/worldfamousdollhut/?hl=en",
+    
   },
   {
     name: "Stages",
     city: "Santa Ana, CA",
+    link: "https://www.instagram.com/stages_bar/?hl=en"
   },
   {
     name: "Characters",
     city: "Pomona, CA",
+    link: "https://www.instagram.com/characterspomonaofficial/?hl=en"
   },
 ];
 
@@ -241,11 +245,18 @@ function App() {
         <h2>Venues</h2>
         <div className="card-grid">
           {venues.map((venue) => (
-            <article className="card" key={venue.name}>
-              <h3>{venue.name}</h3>
-              <p>{venue.city}</p>
-              <a href={`mailto:${venue.contact}`}>{venue.contact}</a>
-            </article>
+            <a
+              key={venue.name}
+              href={venue.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="venue-card-link"
+            >
+              <article className="card">
+                <h3>{venue.name}</h3>
+                <p>{venue.city}</p>
+              </article>
+            </a>
           ))}
         </div>
       </section>
