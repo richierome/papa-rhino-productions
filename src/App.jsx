@@ -156,7 +156,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/rezurex.png`}
-            alt="rezurex"
+            alt="Rezurex"
           />
         </a>
           <a
