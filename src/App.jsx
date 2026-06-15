@@ -144,7 +144,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/hellbillys.png`}
-            alt="So Cal Romeo"
+            alt="Hillbillys"
           />
         </a>
 
@@ -156,7 +156,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/rezurex.png`}
-            alt="Band 3"
+            alt="rezurex"
           />
         </a>
           <a
@@ -167,7 +167,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/12step.png`}
-            alt="Hell City Havoc"
+            alt="12 Step Rebels"
           />
         </a>
 
@@ -179,7 +179,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/madm.png`}
-            alt="Hell City Havoc"
+            alt="Mad Marge"
           />
         </a>
 
@@ -191,7 +191,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/calavera.png`}
-            alt="So Cal Romeo"
+            alt="Calavera"
           />
         </a>
 
@@ -203,7 +203,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/tbj.png`}
-            alt="Hell City Havoc"
+            alt="Three Bad Jack"
           />
         </a>
 
@@ -215,7 +215,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/rocketz.png`}
-            alt="Band 3"
+            alt="Rocketz"
           />
         </a>
 
@@ -227,7 +227,7 @@ function App() {
         >
           <img
             src={`${import.meta.env.BASE_URL}images/rhino.png`}
-            alt="Band 3"
+            alt="Papa Rhino"
           />
         </a>
               </div>
